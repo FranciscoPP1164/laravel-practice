@@ -27,16 +27,16 @@ class MotosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    // public function store(Request $request)
-    // {
-    //     return [
-    //         'id' => '1',
-    //         'plate' => $request->plate,
-    //         'brand' => $request->brand,
-    //         'model' => $request->model,
-    //         'color' => $request->color,
-    //     ];
-    // }
+    public function store(Request $request)
+    {
+        return [
+            'id' => '1',
+            'plate' => $request->plate,
+            'brand' => $request->brand,
+            'model' => $request->model,
+            'color' => $request->color,
+        ];
+    }
 
     /**
      * Display the specified resource.

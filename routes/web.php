@@ -20,9 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//basic route in laravel
 Route::get('/hello', function () {
     return 'Hello world';
-});
+})->middleware('auth.password');
 
 //route that has several http methods available
 Route::match(['get', 'post', 'put'], '/match', function () {
@@ -100,7 +101,12 @@ Route::resource('/motos', MotosController::class);
 //the only method specify the routes that the resource method must generate
 Route::resource('/v2/motos', MotosController::class)->only(['index', 'show']);
 
+//route protected with VerifyPassword middleware
+Route::get('/protected', function () {
+    return 'this route is protected with VerifyPassword middleware';
+})->middleware('auth.password');
+
 //fallback in case no route matches the current request
 Route::fallback(function () {
-    return 'fallback';
+    return 'the route does not exist';
 });
