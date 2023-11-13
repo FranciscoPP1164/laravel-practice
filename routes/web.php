@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\MotosController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -86,6 +88,19 @@ Route::get('/named/call', function () {
     return route('named', ['id' => 1, 'name' => 'Francisco']);
 });
 
+//routes with controller
+Route::get('/cars', [CarController::class, 'getAllCars']);
+Route::get('/cars/{id}', [CarController::class, 'getCarById']);
+Route::post('/cars', [CarController::class, 'createCar']);
+Route::get('/cars/unique', CarController::class);
+
+//this method will create all the routes necessary to interact with a specific resource
+Route::resource('/motos', MotosController::class);
+
+//the only method specify the routes that the resource method must generate
+Route::resource('/v2/motos', MotosController::class)->only(['index', 'show']);
+
+//fallback in case no route matches the current request
 Route::fallback(function () {
     return 'fallback';
 });
