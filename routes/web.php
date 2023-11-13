@@ -23,7 +23,7 @@ Route::get('/', function () {
 //basic route in laravel
 Route::get('/hello', function () {
     return 'Hello world';
-})->middleware('auth.password');
+});
 
 //route that has several http methods available
 Route::match(['get', 'post', 'put'], '/match', function () {
