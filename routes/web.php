@@ -85,3 +85,7 @@ Route::get('/named/call', function () {
     //helper function route
     return route('named', ['id' => 1, 'name' => 'Francisco']);
 });
+
+Route::fallback(function () {
+    return 'fallback';
+});
