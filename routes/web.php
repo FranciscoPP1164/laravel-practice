@@ -22,10 +22,12 @@ Route::get('/hello', function () {
     return 'Hello world';
 });
 
+//route that has several http methods available
 Route::match(['get', 'post', 'put'], '/match', function () {
     return 'Hello world from Route::match';
 });
 
+//Dependency injection into the controller function resolved by the service container
 Route::post('/users', function (Request $request) {
     return [
         'id' => '1',
@@ -34,18 +36,23 @@ Route::post('/users', function (Request $request) {
     ];
 });
 
+//redirect route
 Route::redirect('/redirect', '/hello');
 
+//fast rendering of views
 Route::view('/home', 'welcome');
 
+//dynamic parameters in routes
 Route::get('/users/{id}', function (string $id) {
     return 'user with id ' . $id;
 });
 
+//several dynamic parameters in the routes
 Route::get('/users/{id}/{name}', function (string $id, string $name) {
     return 'user with id ' . $id . ' with name ' . $name;
 });
 
+//dependencies injection combined with dynamic parameters
 Route::put('/users/{id}', function (Request $request, string $id) {
     return [
         'id' => $id + 1,
@@ -54,14 +61,27 @@ Route::put('/users/{id}', function (Request $request, string $id) {
     ];
 });
 
+//optional dynamic parameter
 Route::get('/optional/{id?}', function (string $id = '0') {
     return $id;
 });
 
+//constrained dynamic parameters with a regular expression
 Route::get('/regular/{id}', function (string $id) {
     return $id;
 })->where(['id' => '[0-9]+']);
 
+//constrained dynamic parameters with a regular expression defined by a function
 Route::get('/regular/aux/{id}', function (string $id) {
     return $id;
 })->whereNumber('id');
+
+//named routes
+Route::get('/named/{id}', function (string $id) {
+    return 'this is a named route' . $id;
+})->name('named');
+
+Route::get('/named/call', function () {
+    //helper function route
+    return route('named', ['id' => 1, 'name' => 'Francisco']);
+});
