@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\FruitsController;
 use App\Http\Controllers\MotosController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -106,8 +107,21 @@ Route::get('/protected', function () {
     return 'this route is protected with VerifyPassword middleware';
 })->middleware('auth.password');
 
+//the view helper serves to render views of blade in resources folder
 Route::get('/views/hello-world', function () {
     return view('hello-world', ['name' => 'Francisco', 'lastName' => 'Parra']);
+});
+
+// Route::get('/fruits', [FruitsController::class, 'index']);
+// Route::post('/fruits', [FruitsController::class, 'store']);
+// Route::delete('/fruits/{id}', [FruitsController::class, 'destroy']);
+
+//route groups
+Route::name('fruits.')->prefix('/fruits')->controller(FruitsController::class)->middleware('auth.password')->group(function () {
+    Route::get('', 'index')->name('index')->withoutMiddleware('auth.password');
+    Route::get('/{id}', 'show')->name('show');
+    Route::post('', 'store')->name('store');
+    Route::delete('/{id}', 'destroy')->name('destroy');
 });
 
 //fallback in case no route matches the current request
