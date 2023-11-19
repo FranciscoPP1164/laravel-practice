@@ -117,7 +117,7 @@ Route::get('/views/hello-world', function () {
 // Route::delete('/fruits/{id}', [FruitsController::class, 'destroy']);
 
 //route groups
-Route::name('fruits.')->prefix('/fruits')->controller(FruitsController::class)->middleware('auth.password')->group(function () {
+Route::name('fruits.')->prefix('/fruits')->controller(FruitsController::class)->middleware([])->group(function () {
     Route::get('', 'index')->name('index')->withoutMiddleware('auth.password');
     Route::get('/{id}', 'show')->name('show');
     Route::post('', 'store')->name('store');

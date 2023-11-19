@@ -18,11 +18,11 @@ class FruitsController extends Controller
 
             return [
                 'count' => $countFruits,
-                'data' => $fruits,
+                'fruits' => $fruits,
             ];
         }, 3);
 
-        return response()->json($results);
+        return view('fruits.index', $results);
     }
 
     public function show(string $id)
@@ -45,21 +45,26 @@ class FruitsController extends Controller
             return response("something wrent wrong on create the fruit");
         }
 
-        if (!$isFruitCreated) {
-            return response("the fruit aren't create");
-        }
+        // if (!$isFruitCreated) {
+        //     return response("the fruit aren't create");
+        // }
 
-        return response("the fruit are created succesfully");
+        // return response("the fruit are created succesfully");
+
+        return redirect()->route('fruits.index');
     }
 
     public function destroy(string $id)
     {
         $isFruitDeleted = DB::delete("delete from fruit where id = ?", [$id]);
 
-        if (!$isFruitDeleted) {
-            return response("the fruit aren't deleted");
-        }
+        // if (!$isFruitDeleted) {
+        //     return response("the fruit aren't deleted");
+        // }
 
-        return response("the fruit are deleted succesfully");
+        // return response("the fruit are deleted succesfully");
+
+        return redirect()->route('fruits.index');
+
     }
 }
