@@ -106,6 +106,10 @@ Route::get('/protected', function () {
     return 'this route is protected with VerifyPassword middleware';
 })->middleware('auth.password');
 
+Route::get('/views/hello-world', function () {
+    return view('hello-world', ['name' => 'Francisco', 'lastName' => 'Parra']);
+});
+
 //fallback in case no route matches the current request
 Route::fallback(function () {
     return 'the route does not exist';
