@@ -88,7 +88,7 @@
                 </form>
             </li>
         
-            @break($fruit->price >= 2000)
+            {{-- @break($fruit->price >= 2000) --}}
         @empty
             <p>there are no registered fruits</p>
         @endforelse

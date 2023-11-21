@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\FruitsController;
+use App\Http\Controllers\FruitsV2Controller;
 use App\Http\Controllers\MotosController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -123,6 +124,8 @@ Route::name('fruits.')->prefix('/fruits')->controller(FruitsController::class)->
     Route::post('', 'store')->name('store');
     Route::delete('/{id}', 'destroy')->name('destroy');
 });
+
+Route::name('v2')->resource('v2/fruits', FruitsV2Controller::class);
 
 //fallback in case no route matches the current request
 Route::fallback(function () {
