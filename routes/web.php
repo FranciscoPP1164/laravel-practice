@@ -127,6 +127,15 @@ Route::name('fruits.')->prefix('/fruits')->controller(FruitsController::class)->
 
 Route::name('v2')->resource('v2/fruits', FruitsV2Controller::class);
 
+Route::get('/session/{name}', function (string $name) {
+    session(['name' => $name]);
+    session()->flash('status', 'flashed');
+});
+
+Route::get('/session', function () {
+    return session()->all();
+});
+
 //fallback in case no route matches the current request
 Route::fallback(function () {
     return 'the route does not exist';
