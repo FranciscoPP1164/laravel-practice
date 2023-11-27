@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use DB;
+use App\Http\Requests\StoreFruit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 //query builder
 
@@ -29,13 +31,15 @@ class FruitsV2Controller extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreFruit $request)
     {
-        $newFruit = [
-            'name' => $request->name,
-            'price' => $request->price,
-            'stock' => $request->stock,
-        ];
+        // $newFruit = $request->validate([
+        //     'name' => 'bail|required|string',
+        //     'price' => 'bail|required|numeric',
+        //     'stock' => 'bail|required|integer',
+        // ]);
+
+        $newFruit = $request->validated();
 
         DB::table('fruit')->insert($newFruit);
 
@@ -65,11 +69,23 @@ class FruitsV2Controller extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $newFruit = [
-            'name' => $request->name,
-            'price' => $request->price,
-            'stock' => $request->stock,
-        ];
+        // $newFruit = $request->validate([
+        //     'name' => 'bail|required|string',
+        //     'price' => 'bail|required|numeric',
+        //     'stock' => 'bail|required|integer',
+        // ]);
+
+        $newFruit = $request->only(['name', 'price', 'stock']);
+
+        $validator = Validator::make($newFruit, [
+            'name' => 'bail|required|string',
+            'price' => 'bail|required|numeric',
+            'stock' => 'bail|required|integer',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
 
         DB::table('fruit')->where('id', $id)->update($newFruit);
 

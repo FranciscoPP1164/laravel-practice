@@ -27,15 +27,29 @@
     <h2>Create a new fruit</h2>
       <form action="{{route('v2.fruits.store')}}" method="POST" class="form-create">
         <label for="fruitName">Name</label>
-        <input type="text" id="fruitName" name="name" placeholder="Name of fruit">
+        <input type="text" id="fruitName" name="name" placeholder="Name of fruit" value="{{old('name')}}">
+
+        @error('name')
+          <i>{{$message}}</i>
+        @enderror
         
         <label for="fruitPrice">Price</label>
-        <input type="number" id="fruitPrice" name="price" placeholder="Price of fruit">
+        <input type="number" id="fruitPrice" name="price" placeholder="Price of fruit" value="{{old('price')}}">
+
+        @error('price')
+          <i>{{$message}}</i>
+        @enderror
         
         <label for="fruitStock">Stock</label>
-        <input type="number" id="fruitStock" name="stock" placeholder="Stock of fruit">
+        <input type="number" id="fruitStock" name="stock" placeholder="Stock of fruit" value="{{old('stock')}}">
+
+        @error('stock')
+          <i>{{$message}}</i>
+        @enderror
         
         <input type="submit" value="CREATE">
       </form>
+
+      
   </body>
 </html>
