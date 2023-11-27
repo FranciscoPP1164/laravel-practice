@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\FruitsController;
 use App\Http\Controllers\FruitsV2Controller;
@@ -134,6 +135,12 @@ Route::get('/session/{name}', function (string $name) {
 
 Route::get('/session', function () {
     return session()->all();
+});
+
+Route::name('practice2.')->prefix('/practice2')->group(function () {
+    Route::get('/brands/trash', [BrandController::class, 'trash'])->name('brands.trash');
+    Route::patch('/brands/{brand}/restore', [BrandController::class, 'restore'])->name('brands.restore');
+    Route::resource('brands', BrandController::class);
 });
 
 //fallback in case no route matches the current request

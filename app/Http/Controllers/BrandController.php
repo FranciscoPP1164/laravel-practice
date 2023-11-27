@@ -12,7 +12,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        //
+        $brands = Brand::all();
+        return view('practice2.brands.index', ['brands' => $brands]);
     }
 
     /**
@@ -20,7 +21,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('practice2.brands.create');
     }
 
     /**
@@ -28,7 +29,14 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newBrand = $request->validate([
+            'brand' => 'bail|required|string|max:30|unique:brands,brand',
+            'owner' => 'bail|required|string|max:50',
+        ]);
+
+        Brand::create($newBrand);
+
+        return redirect()->route('practice2.brands.index')->with('success', 'The brand are created successfully');
     }
 
     /**
@@ -36,7 +44,7 @@ class BrandController extends Controller
      */
     public function show(Brand $brand)
     {
-        //
+        return view('practice2.brands.show', ['brand' => $brand]);
     }
 
     /**
@@ -44,7 +52,7 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        //
+        return view('practice2.brands.edit', ['brand' => $brand]);
     }
 
     /**
@@ -52,7 +60,14 @@ class BrandController extends Controller
      */
     public function update(Request $request, Brand $brand)
     {
-        //
+        $newBrand = $request->validate([
+            'brand' => 'bail|required|string|max:30|unique:brands,brand',
+            'owner' => 'bail|required|string|max:50',
+        ]);
+
+        $brand->update($newBrand);
+
+        return redirect()->route('practice2.brands.index')->with('success', 'The brand are updated successfully');
     }
 
     /**
@@ -60,6 +75,24 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        //
+        if ($brand->trashed()) {
+            $brand->forceDelete();
+            return redirect()->route('practice2.brands.trash')->with('success', 'The brand are deleted permanent');
+        }
+
+        $brand->delete();
+        return redirect()->route('practice2.brands.index')->with('success', 'The brand are moved to trash');
+    }
+
+    public function trash()
+    {
+        $trashedBrands = Brand::onlyTrashed();
+        return view('practice2.brands.trash', ['brands' => $trashedBrands]);
+    }
+
+    public function restore(Brand $brand)
+    {
+        $brand->restore();
+        return redirect()->route('practice2.brands.trash')->with('success', 'The brand are restored');
     }
 }
