@@ -1,3 +1,8 @@
-<x-practice2.brands.layout section="brands">
-  hello worldasdfasdf
-</x-practice2.brands.layout>
+<x-practice2.layout section="brands">
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis numquam voluptatum doloribus ad quidem ullam magni eum! Soluta asperiores officiis fuga, magni repellendus fugiat libero corporis natus nobis, distinctio quis.</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis numquam voluptatum doloribus ad quidem ullam magni eum! Soluta asperiores officiis fuga, magni repellendus fugiat libero corporis natus nobis, distinctio quis.</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis numquam voluptatum doloribus ad quidem ullam magni eum! Soluta asperiores officiis fuga, magni repellendus fugiat libero corporis natus nobis, distinctio quis.</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis numquam voluptatum doloribus ad quidem ullam magni eum! Soluta asperiores officiis fuga, magni repellendus fugiat libero corporis natus nobis, distinctio quis.</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis numquam voluptatum doloribus ad quidem ullam magni eum! Soluta asperiores officiis fuga, magni repellendus fugiat libero corporis natus nobis, distinctio quis.</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis numquam voluptatum doloribus ad quidem ullam magni eum! Soluta asperiores officiis fuga, magni repellendus fugiat libero corporis natus nobis, distinctio quis.</p>
+</x-practice2.layout>

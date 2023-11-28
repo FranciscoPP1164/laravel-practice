@@ -62,4 +62,14 @@ class VehicleInConcessionaireController extends Controller
     {
         //
     }
+
+    public function trash()
+    {
+
+    }
+
+    public function restore(Vehicle_in_concessionaire $vehicle_in_concessionaire)
+    {
+
+    }
 }

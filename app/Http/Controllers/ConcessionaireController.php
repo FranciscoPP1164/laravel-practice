@@ -62,4 +62,14 @@ class ConcessionaireController extends Controller
     {
         //
     }
+
+    public function trash()
+    {
+
+    }
+
+    public function restore(Concessionaire $concessionaire)
+    {
+
+    }
 }

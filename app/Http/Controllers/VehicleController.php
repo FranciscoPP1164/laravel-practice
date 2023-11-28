@@ -62,4 +62,14 @@ class VehicleController extends Controller
     {
         //
     }
+
+    public function trash()
+    {
+
+    }
+
+    public function restore(Vehicle $vehicle)
+    {
+
+    }
 }

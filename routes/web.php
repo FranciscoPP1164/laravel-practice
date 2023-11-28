@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\ConcessionaireController;
 use App\Http\Controllers\FruitsController;
 use App\Http\Controllers\FruitsV2Controller;
 use App\Http\Controllers\MotosController;
+use App\Http\Controllers\VehicleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -141,6 +143,14 @@ Route::name('practice2.')->prefix('/practice2')->group(function () {
     Route::get('/brands/trash', [BrandController::class, 'trash'])->name('brands.trash');
     Route::patch('/brands/{brand}/restore', [BrandController::class, 'restore'])->name('brands.restore');
     Route::resource('brands', BrandController::class);
+
+    Route::get('/vehicles/trash', [VehicleController::class, 'trash'])->name('vehicles.trash');
+    Route::patch('/vehicles/{vehicle}/restore', [VehicleController::class, 'restore'])->name('vehicles.restore');
+    Route::resource('vehicles', VehicleController::class);
+
+    Route::get('/concessionaires/trash', [ConcessionaireController::class, 'trash'])->name('concessionaires.trash');
+    Route::patch('/concessionaires/{concessionaire}/restore', [ConcessionaireController::class, 'restore'])->name('concessionaires.restore');
+    Route::resource('concessionaires', ConcessionaireController::class);
 });
 
 //fallback in case no route matches the current request
