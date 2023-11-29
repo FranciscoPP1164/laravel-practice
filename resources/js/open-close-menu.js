@@ -3,10 +3,12 @@ window.onload = () => {
         "openCloseNavigationMenuButton"
     );
     const navigationMenu = document.getElementById("navigationMenu");
+    const mainContent = document.getElementById("mainContent");
 
     openCloseNavigationMenuButton.onclick = (event) => {
-        console.log("click");
         navigationMenu.classList.toggle("translate-x-full");
-        document.body.classList.toggle("overflow-hidden");
+        navigationMenu.classList.toggle("md:w-11");
+        navigationMenu.classList.toggle("md:w-56");
+        mainContent.classList.toggle("md:ml-56");
     };
 };

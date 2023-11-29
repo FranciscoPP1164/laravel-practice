@@ -12,7 +12,7 @@ class ConcessionaireController extends Controller
      */
     public function index()
     {
-        //
+        return view('practice2.concessionaires.index');
     }
 
     /**

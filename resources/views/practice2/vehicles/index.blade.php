@@ -1,0 +1,8 @@
+<x-practice2.layout section="vehicles">
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis numquam voluptatum doloribus ad quidem ullam magni eum! Soluta asperiores officiis fuga, magni repellendus fugiat libero corporis natus nobis, distinctio quis.</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis numquam voluptatum doloribus ad quidem ullam magni eum! Soluta asperiores officiis fuga, magni repellendus fugiat libero corporis natus nobis, distinctio quis.</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis numquam voluptatum doloribus ad quidem ullam magni eum! Soluta asperiores officiis fuga, magni repellendus fugiat libero corporis natus nobis, distinctio quis.</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis numquam voluptatum doloribus ad quidem ullam magni eum! Soluta asperiores officiis fuga, magni repellendus fugiat libero corporis natus nobis, distinctio quis.</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis numquam voluptatum doloribus ad quidem ullam magni eum! Soluta asperiores officiis fuga, magni repellendus fugiat libero corporis natus nobis, distinctio quis.</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis numquam voluptatum doloribus ad quidem ullam magni eum! Soluta asperiores officiis fuga, magni repellendus fugiat libero corporis natus nobis, distinctio quis.</p>
+</x-practice2.layout>
