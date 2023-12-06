@@ -141,8 +141,8 @@ Route::get('/session', function () {
 
 Route::name('practice2.')->prefix('/practice2')->group(function () {
     Route::get('/brands/trash', [BrandController::class, 'trash'])->name('brands.trash');
-    Route::patch('/brands/{brand}/restore', [BrandController::class, 'restore'])->name('brands.restore');
-    Route::resource('brands', BrandController::class);
+    Route::patch('/brands/{brand}/restore', [BrandController::class, 'restore'])->withTrashed()->name('brands.restore');
+    Route::resource('brands', BrandController::class)->except(['create'])->withTrashed(['destroy']);
 
     Route::get('/vehicles/trash', [VehicleController::class, 'trash'])->name('vehicles.trash');
     Route::patch('/vehicles/{vehicle}/restore', [VehicleController::class, 'restore'])->name('vehicles.restore');

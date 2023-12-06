@@ -1,4 +1,4 @@
-<li @class(['relative', 'flex', 'items-center', 'md:w-56', 'bg-gray-200'=>$actualSection===$section, 'hover:bg-gray-200'=>$actualSection!==$section])>
+<li @class(['relative', 'flex', 'items-center', 'md:w-56', 'bg-gray-300'=>$actualSection===$section, 'hover:bg-gray-200'=>$actualSection!==$section])>
     <a href="{{route("practice2.$section.index")}}" class="text-lg flex items-center gap-x-3 w-full h-full py-3 px-3 text-gray-500">
         {{$slot}}
         {{ucfirst($section)}}
