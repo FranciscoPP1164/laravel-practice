@@ -12,15 +12,8 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        return view('practice2.vehicles.index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $vehicles = Vehicle::all();
+        return view('practice2.vehicles.index', ['vehicles' => $vehicles]);
     }
 
     /**
@@ -28,7 +21,14 @@ class VehicleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newBrand = $request->validate([
+            'brand' => 'bail|required|string|max:30|unique:brands,brand',
+            'owner' => 'bail|required|string|max:50',
+        ]);
+
+        Vehicle::create($newBrand);
+
+        return redirect()->route('practice2.brands.index')->with('success', 'The brand are created successfully');
     }
 
     /**

@@ -146,7 +146,7 @@ Route::name('practice2.')->prefix('/practice2')->group(function () {
 
     Route::get('/vehicles/trash', [VehicleController::class, 'trash'])->name('vehicles.trash');
     Route::patch('/vehicles/{vehicle}/restore', [VehicleController::class, 'restore'])->name('vehicles.restore');
-    Route::resource('vehicles', VehicleController::class);
+    Route::resource('vehicles', VehicleController::class)->except(['create']);
 
     Route::get('/concessionaires/trash', [ConcessionaireController::class, 'trash'])->name('concessionaires.trash');
     Route::patch('/concessionaires/{concessionaire}/restore', [ConcessionaireController::class, 'restore'])->name('concessionaires.restore');
